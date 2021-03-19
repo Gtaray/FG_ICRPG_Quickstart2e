@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.3" release="1.0">
+	<announcement text="Loaded rules from Quickstart 2e" font="emotefont" />
+	<properties>
+		<name>ICRPG - Quickstart 2e</name>
+		<version>1.0</version>
+		<author>George Taray</author>
+		<description>Adds rules changes from Quickstart 2e.</description>
+		<ruleset>
+			<name>ICRPG</name>
+		</ruleset>
+		<loadorder>50</loadorder>
+	</properties>
+	<base>
+		<!-- These are all the files that get used by the extension -->
+		<!-- Campaign -->		
+		<includefile source="campaign/record_char_main.xml" />
+		<includefile source="campaign/record_npc.xml" />
+		<includefile source="campaign/record_power.xml" />
+
+		<!-- Strings -->
+		<includefile source="strings/strings.xml" />
+
+		<!-- Scripts -->
+		<script name="Quickstart2e" file="scripts/quickstart2e.lua" />
+	</base>
+</root>

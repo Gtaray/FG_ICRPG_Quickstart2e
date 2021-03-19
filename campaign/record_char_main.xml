@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="charsheet_main" merge="join">
+        <sheetdata>
+			<frame_char name="statsframe">
+				<anchored width="210" height="250">
+					<top>
+						<parent>defenseframe</parent>
+						<anchor>bottom</anchor>
+					</top>
+					<left>
+						<offset>20</offset>
+					</left>
+				</anchored>
+			</frame_char>
+			
+            <!-- resize the white box frame to fit the new row -->
+            <frame_char name="effortframe">
+				<anchored height="250">
+					<top>
+						<parent>defenseframe</parent>
+						<anchor>bottom</anchor>
+					</top>
+					<left>
+						<parent>statsframe</parent>
+						<anchor>right</anchor>
+					</left>
+					<right>
+						<offset>-20</offset>
+					</right>
+				</anchored>
+			</frame_char>
+
+            <!-- This adds the TOTAL box (the one that's rolled from) -->
+            <!-- The template for number_charefforttotal has code that binds it's value to the sum of energy_base and energy_loot, defined below -->
+            <!-- The source attribute defines where the data lives in the DB.xml -->
+            <number_charefforttotal name="guns" source="effort.guns.total" insertbefore="magic">
+				<anchored to="weapon" />
+				<target>gun</target>
+                <die>d8</die>
+			</number_charefforttotal>
+            <string_chareffortlabel name="guns_label" insertbefore="magic">
+				<anchored to="guns" />
+				<static textres="GUNS" />
+			</string_chareffortlabel>
+            <number_chareffortbase name="guns_base" source="effort.guns.base" insertbefore="magic">
+				<anchored to="guns" />
+			</number_chareffortbase>
+            <number_chareffortloot name="guns_loot" source="effort.guns.loot" insertbefore="magic">
+				<anchored to="guns" />
+			</number_chareffortloot>
+
+			<number_charefforttotal name="magic" merge="join">
+				<anchored to="guns" />
+				<target>magic</target>
+                <die>d10</die>
+			</number_charefforttotal>
+        </sheetdata>
+    </windowclass>
+
+	<!-- TEMPLATES -->
+	<template name="cycler_effort_stat">
+		<button_stringcycler>
+			<anchored width="50" height="20" />
+			<parameters>
+				<defaultlabelres>dash</defaultlabelres>
+				<labelsres>BASIC|WEAPON|GUNS|MAGIC|ULTIMATE</labelsres>
+				<values>basic|weapon|gun|magic|ultimate</values>
+			</parameters>
+		</button_stringcycler>
+	</template>
+</root>

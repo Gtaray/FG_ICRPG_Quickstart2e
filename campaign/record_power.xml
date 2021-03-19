@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="power_page_stats" merge="join">
+		<sheetdata>
+			<number_charefforttotal name="basic" merge="join">
+				<anchored to="statsframe" position="insidetopleft" offset="15,60"/>
+                <die>d4</die>
+			</number_charefforttotal>
+
+            <number_charefforttotal name="weapon" merge="join">
+                <anchored to="basic" position="righthigh" offset="26,0" />
+				<target>weapon</target>
+                <die>d6</die>
+			</number_charefforttotal>
+
+
+			<!-- NEW: GUNS -->
+            <number_charefforttotal name="guns" insertbefore="magic">
+				<anchored to="weapon" position="righthigh" offset="26,0" />
+				<target>gun</target>
+                <die>d8</die>
+			</number_charefforttotal>
+			<label_npc_stat name="healing_label" insertbefore="magic">
+				<anchored to="guns" />
+				<static textres="GUNS"/>
+			</label_npc_stat>
+
+			<number_charefforttotal name="magic" merge="join">
+                <anchored to="guns" position="righthigh" offset="26,0" /> 
+				<target>magic</target>
+                <die>d10</die>
+			</number_charefforttotal>
+			<label_npc_stat name="magic_label" merge="join">
+				<static textres="MAGIC"/>
+			</label_npc_stat>
+
+			<number_charefforttotal name="ultimate" merge="join">
+				<anchored to="magic" position="righthigh" offset="27,0" />
+			</number_charefforttotal>
+            <label_npc_stat name="ultimate_label" merge="join">
+				<static textres="ULTIMATE"/>
+			</label_npc_stat>
+		</sheetdata>
+	</windowclass>
+
+	<!-- TEMPLATE -->
+	<template name="cycler_effort_stat">
+		<button_stringcycler>
+			<anchored width="50" height="20" />
+			<parameters>
+				<defaultlabelres>dash</defaultlabelres>
+				<labelsres>BASIC|WEAPON|GUNS|MAGIC|ULTIMATE|STR|DEX|CON|INT|WIS|CHA</labelsres>
+				<values>basic|weapon|gun|magic|ultimate|strength|dexterity|constitution|intelligence|wisdom|charisma</values>
+			</parameters>
+		</button_stringcycler>
+	</template>	
+</root>

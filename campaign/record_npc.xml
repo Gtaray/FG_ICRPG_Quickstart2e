@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>	
+	<windowclass name="npc_main" merge="join">
+		<sheetdata>
+			<!-- Move the basic effort box to the left to make room for the new effort box -->
+			<!-- Since all other effort boxes are anchored to this one, they also move over -->
+			<npc_effort name="basic">
+				<anchored merge="replace" width="40" height="30">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="25" />
+					<left anchor="center" offset="-153" />
+				</anchored>
+			</npc_effort>
+
+			<!-- insert energy box and label before the ultimate effort box -->
+			<npc_effort name="guns" source="effort.gun" insertbefore="magic">
+				<!-- TARGET tells the system what stat this box is associated with. This is the same stat that was defined in energyeffort -->
+				<target>gun</target>
+				<!-- DIE tells the system what die to roll for this effort. -->
+				<die>d8</die>
+			</npc_effort>
+			<label_npc_stat name="gunslabel">
+				<anchored to="guns" />
+				<static textres="GUNS" />
+			</label_npc_stat>
+
+			<npc_effort name="magic" marge="join">
+				<target>magic</target>
+				<die>d10</die>
+			</npc_effort>
+		</sheetdata>
+	</windowclass>
+</root>
