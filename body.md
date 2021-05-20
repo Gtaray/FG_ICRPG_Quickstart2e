@@ -1,0 +1,1 @@
+[Fixed] Gun effort now works correctly.
