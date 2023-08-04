@@ -44,7 +44,7 @@
 				<anchored to="magic" position="righthigh" offset="27,0" />
 			</number_charefforttotal>
             <label_npc_stat name="ultimate_label" merge="join">
-				<static textres="ULTIMATE"/>
+				<static textres="ULT"/>
 			</label_npc_stat>
 		</sheetdata>
 	</windowclass>
